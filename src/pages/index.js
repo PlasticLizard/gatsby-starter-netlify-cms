@@ -7,7 +7,7 @@ export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
-
+    console.log(data);
     return (
       <Layout>
         <section className="section">
@@ -15,6 +15,9 @@ export default class IndexPage extends React.Component {
             <div className="content">
               <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
             </div>
+            {data.swapi.allSpecies.map(({name: spec}) => (
+              <span>{spec}</span>
+            ))}
             {posts
               .map(({ node: post }) => (
                 <div
@@ -73,6 +76,11 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
           }
         }
+      }
+    }
+    swapi {
+      allSpecies {
+        name
       }
     }
   }
