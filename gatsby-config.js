@@ -72,6 +72,22 @@ module.exports = {
         url: "https://api.graphcms.com/simple/v1/swapi"
       }
     },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "bizlistings",
+        fieldName: "bizListings",
+        // Url to query from
+        url: "https://pnlmv96mif.execute-api.us-east-1.amazonaws.com/production/graphql",
+        // HTTP headers
+        headers: {
+          // Learn about environment variables: https://gatsby.app/env-vars
+          "x-api-key": `rJmPPWlwDv5smZq0hp2aj56jeFRq3KQ1le2EkxR1`//`bearer ${process.env.GITHUB_TOKEN}`,
+        },
+        // Additional options to pass to node-fetch
+        fetchOptions: {},
+      },
+    },
     'gatsby-plugin-purgecss', // must be after other CSS plugins
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify', // make sure to keep it last in the array
