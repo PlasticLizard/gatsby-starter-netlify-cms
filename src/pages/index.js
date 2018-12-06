@@ -15,8 +15,8 @@ export default class IndexPage extends React.Component {
             <div className="content">
               <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
             </div>
-            {data.swapi.allSpecies.map(({name: spec}) => (
-              <span>{spec}</span>
+            {data.bizListings.getAllBrokers.map(({ name, id }) => (
+              <span key={id}><b>{name}</b> | </span>
             ))}
             {posts
               .map(({ node: post }) => (
@@ -78,8 +78,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    swapi {
-      allSpecies {
+    bizListings {
+      getAllBrokers {
+        id
         name
       }
     }
